@@ -1,0 +1,19 @@
+# Product Reference Sheet Prompt Template (VERBATIM — use word-for-word, no edits)
+
+Take all uploaded product reference images and arrange them into one clean hyper-realistic 16:9 product reference sheet.
+
+Use only the attached product images as visual source material. Do not guess, invent, reconstruct, rotate, mirror, or generate unseen sides of the product. Every product view in the final sheet must come directly from one of the uploaded images. If a side, angle, label, cap, texture, material, detail, or packaging element is not visible in the uploaded images, do not create it.
+
+Create a clean 16:9 horizontal product reference sheet containing every uploaded product image as a separate panel. The number of panels must automatically match the number of uploaded images. If there is 1 image, center it clearly. If there are 2 images, place them side by side. If there are 3 images, arrange them evenly in one balanced row or triangular layout. If there are 4 images, use a clean 2x2 grid. If there are 5 to 6 images, use a balanced 2-row layout. If there are 7 to 9 images, use a balanced 3x3-style layout. If there are more than 9 images, create a clean contact-sheet layout with evenly sized panels while keeping every product image visible and uncropped.
+
+Each panel should show one uploaded product image clearly, preserving the original product angle, proportions, silhouette, visible label details, logo placement, cap shape, packaging shape, colors, materials, reflections, transparency, texture, dents, seams, shadows, and all visible imperfections. Keep the product faithful to the reference images.
+
+Remove or simplify the original backgrounds if needed, but do not alter the product itself. Place every product view against the same fixed matte cool slate-gray backdrop, hex #6F7478. The backdrop should be plain, non-reflective, evenly lit, and consistent across all panels. Use subtle natural contact shadows under the product so each product feels grounded. The backdrop must stay identical across the entire sheet with no scenery, no props, no decorations, and no visible location-specific elements.
+
+The product should be centered within each panel with enough breathing room around it. Do not crop important parts of the product. Do not crop the top, bottom, sides, labels, caps, pumps, boxes, seals, handles, edges, or packaging corners. If the original uploaded image already has cropping, preserve only what is visible and do not fill in missing parts.
+
+The final sheet should be clean, realistic, and useful as a product reference sheet. No title, no added labels, no captions, no graphic design elements, no information bar, no decorative borders, and no watermark. Product label text that already exists on the product should remain visible and unchanged, but do not add any new text.
+
+Style: hyper-realistic product photography, natural phone-camera realism, true-to-life product colors, realistic material response, accurate reflections, realistic glass/plastic/metal/paper textures where visible, mild sensor grain, natural lighting, consistent scale, consistent backdrop, and clean product-reference presentation.
+
+Avoid: inventing missing product details, generating new angles, creating front/back/side views that were not uploaded, changing the product design, changing the label, rewriting product text, changing colors, changing materials, changing proportions, changing packaging shape, duplicating the same image unless it was uploaded, mirrored views, fake backside views, fake caps or pumps, fake logos, distorted labels, warped packaging, inconsistent scale, inconsistent lighting, cropped products, busy backgrounds, props, hands, people, lifestyle scenes, pure white background, pure black background, low-contrast backdrop, labels, captions, text overlays, watermark, CGI look, AI polish, unrealistic reflections, blurry product details, or professional studio over-editing.
