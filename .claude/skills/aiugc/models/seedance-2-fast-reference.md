@@ -5,7 +5,7 @@ ByteDance's video model in reference-to-video mode: takes up to 9 images plus a 
 | Field | Value |
 |---|---|
 | Model ID | `bytedance/seedance-2.0/fast/reference-to-video` |
-| Provider | fal.ai (fallback: WaveSpeed AI — see Notes) |
+| Provider | fal.ai |
 | Method | **Async via the fal queue** (a 15s clip takes minutes; don't hold a sync connection open) |
 | Type | Video, reference-to-video, with native audio |
 | API key | `.env` → `FAL_KEY` |
@@ -58,6 +58,6 @@ Be patient. Tell the user it's rendering and roughly how long it may take; do no
 
 ## Notes
 
-- **1080p:** not available on this fal endpoint. If the user asks, say so plainly. WaveSpeed AI lists Seedance 2.0 tiers that reach 1080p (roughly $4.50 for a 15s clip at 1080p). Confirm that WaveSpeed's variant accepts multiple reference images before offering it. If it only takes one start image, it has the same consistency problem as Kling (below). Quote the price and get approval first.
+- **1080p:** not available on this fal endpoint. If the user asks, say so plainly. The only 1080p route in this skill is Kling 3.0 `pro` (`models/kling-3.md`), which takes a single start image and holds face and product less consistently. Offer it only with that warning, quote the price, and get approval first.
 - **Standard (non-Fast) tier:** `bytedance/seedance-2.0/reference-to-video`, same request shape, $0.3024/s (~$4.54 for 15s), also 480p/720p. Offer it only if the user asks for higher quality than Fast.
 - A content-policy rejection is not a transient error. Show the message, don't retry automatically.

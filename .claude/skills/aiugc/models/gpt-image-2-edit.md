@@ -5,7 +5,7 @@ OpenAI's image model in edit mode: takes reference images plus a prompt. **Steps
 | Field | Value |
 |---|---|
 | Model ID | `openai/gpt-image-2/edit` |
-| Provider | fal.ai (fallback: WaveSpeed AI) |
+| Provider | fal.ai |
 | Method | Sync (one call, finished result in the reply) |
 | Type | Image, image-to-image |
 | API key | `.env` → `FAL_KEY` |
@@ -56,5 +56,5 @@ Download `images[0].url` immediately and save it flat into the generations folde
 
 ## Notes
 
-- If a request is rejected for content policy (common with real-looking people), say so plainly, show the provider's message, and ask before retrying on a fallback provider. Don't silently reword the verbatim template to get past a filter.
+- If a request is rejected for content policy (common with real-looking people), say so plainly, show the provider's message, and ask the user how to proceed. Don't silently reword the verbatim template to get past a filter.
 - GPT Image 2 is strong at preserving printed label text, which is why it owns the product sheet — don't swap it for a cheaper model on Step 3.

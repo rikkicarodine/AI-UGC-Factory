@@ -5,7 +5,7 @@ Google's fast photoreal image model. **Step 1 only** — the text-only model ima
 | Field | Value |
 |---|---|
 | Model ID | `fal-ai/nano-banana-2` |
-| Provider | fal.ai (fallback: Google AI Studio `gemini-3.1-flash-image-preview`, then WaveSpeed AI) |
+| Provider | fal.ai |
 | Method | Sync (one call, finished result in the reply) |
 | Type | Image, text-to-image |
 | API key | `.env` → `FAL_KEY` |

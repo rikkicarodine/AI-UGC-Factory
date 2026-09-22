@@ -32,7 +32,6 @@ Before starting the pipeline, check for API keys. Read them from the `.env` file
 |---|---|
 | `FAL_KEY` | All generation: Steps 1–5 |
 | `KIE_API_KEY` | Uploading local images to public URLs (Steps 2–5 need this). Also the opt-in Kling route |
-| `WAVESPEED_API_KEY` | Optional. Second fallback provider |
 
 - **`FAL_KEY` present** → default to **API mode**: you run every generation yourself. If `KIE_API_KEY` is missing, use the fal-storage upload route in `models/kie-upload.md` if it's available; otherwise ask the user to add a Kie key before Step 2.
 - **`FAL_KEY` missing** → tell the user the keys aren't set up and ask whether that's intended. If they want direct generation, point them to the setup: sign up at fal.ai and kie.ai, create an API key in each dashboard, and put them in a `.env` file in the workspace (see `.env.example` at the repo root), with `.env` in `.gitignore`. If they'd rather continue without keys, switch to **Manual mode**: you walk the exact same pipeline, but at each step you deliver the finished, ready-to-paste prompt plus precise instructions on which model to pick, which settings to use, and which images to upload, in order, and the user generates on their side (e.g. in the fal.ai playground for that model).
@@ -67,16 +66,16 @@ Prices move. Treat these as ballparks and say so when quoting. Never use lower q
 
 **Step 1 is not "draft cheap, finish pretty."** A rerun of the same prompt produces a *different person*, so there's no way to upgrade a cheap draft into a final. Step 1 runs on full Nano Banana 2 from the start. The Lite variant is only for when the user explicitly wants lots of throwaway looks to find a direction (see the recipe).
 
-**720p note (say this to the user at step 5):** "Heads up — I'll render at 720p. Seedance 2.0 Fast on fal tops out at 720p. If you really need 1080p, there are other routes, but they cost more or hold your model and product less consistently. Just ask and I'll walk you through them." (Options are in `models/seedance-2-fast-reference.md` → Notes and `models/kling-3.md`.)
+**720p note (say this to the user at step 5):** "Heads up — I'll render at 720p. Seedance 2.0 Fast on fal tops out at 720p. If you really need 1080p, Kling 3.0 can do it, but it holds your model and product less consistently. Just ask and I'll walk you through it." (See `models/kling-3.md`.)
 
 **Fixed output — one 15-second video:** this pipeline produces exactly **one video, 15 seconds long**. Duration is not a question to ask and not a setting to negotiate. If the user asks for something longer (e.g. "a 40-second video") or for several clips, tell them plainly that this skill delivers a single 15-second video, and plan the concept to land inside that window — tighten the script rather than splitting it. In Manual mode, deliver exactly one prompt.
 
 ## Provider routing
 
-1. Use the provider listed in each recipe file (fal.ai for all generation, Kie AI for uploads). It's the cheapest route that runs that model well.
-2. If that route lacks the model, fails auth, or returns a server error, fall back to the next provider in the recipe's Provider field (e.g. Google AI Studio for Nano Banana 2, WaveSpeed AI if `WAVESPEED_API_KEY` is set). Re-quote first if the fallback's price differs.
-3. **Never hide a provider swap.** Say which route ran and why.
-4. A content-policy rejection is **not** a reason to fall back silently. Show the user the message and ask.
+1. This skill uses exactly two providers: **fal.ai for all generation, Kie AI for uploads** (and the opt-in Kling route). No other provider is used.
+2. If fal.ai lacks the model, fails auth, or returns a server error, **stop and tell the user**: show the error, say what it means in plain words, and ask how to proceed. Retry once only for a clear transient failure (timeout, 5xx) before any paid job was accepted, and say you did. Never switch a step to a different model to get past an error.
+3. If the Kie upload fails, the fal-storage upload route in `models/kie-upload.md` is the only fallback. Say which route ran and why.
+4. A content-policy rejection is **not** a transient error. Show the user the message and ask.
 5. Kling 3.0 (`models/kling-3.md`) is **never** a fallback for Step 5. It's used only when the user asks for it by name, after hearing the consistency warning.
 6. If a call returns "model not found", the provider has renamed the model. Check the provider's model page, update the recipe file, and tell the user.
 

@@ -36,7 +36,6 @@ cp .env.example .env   # then fill in FAL_KEY and KIE_API_KEY
 
 - `FAL_KEY` — from fal.ai. Required for all generation.
 - `KIE_API_KEY` — from kie.ai. Required to upload your product photos.
-- `WAVESPEED_API_KEY` — optional backup provider.
 
 Without keys, the skill runs in **Manual mode**: it walks the same pipeline and hands you ready-to-paste prompts, settings, and the exact images to attach at each step.
 
@@ -75,7 +74,7 @@ Outputs are saved flat into `generations/`, named `{project}_{description}_{time
 - **Step 1** now runs on Nano Banana 2 instead of Soul 2.0. It still uses a text prompt only.
 - **Video image labels.** The video prompt refers to its images as `@Image1` (character sheet), `@Image2` (product sheet), and `@Image3` (scale reference) in both modes. Seedance reads these labels directly. The original's example label order didn't match the images the pipeline actually passes, so it was corrected.
 - **Key check.** The opening "Is the Higgsfield tool connected?" check became "Are the API keys set?", with API mode and Manual mode.
-- **New from the guide:** a price quote before every paid step (image steps included), provider backups that are always announced, settings files per model, a flat output folder, and a JSON log beside every file.
+- **New from the guide:** a price quote before every paid step (image steps included), a stop-and-ask rule when a provider errors (only fal.ai and Kie AI are used), settings files per model, a flat output folder, and a JSON log beside every file.
 - **Unchanged:** the model-image method, the visual vocabulary, the prose framework, the examples, all three templates, the video beat, camera, dialogue, and realism rules, the approval before and after every generation, and the single 15-second video.
 
 ## Checked against live docs (2026-09-22) and still open
@@ -89,7 +88,6 @@ Checked:
 
 Still open:
 
-- [ ] **No 1080p on the main video model.** Seedance 2.0 Fast on fal tops out at 720p. The skill says so, and lists two other routes if you ask: WaveSpeed's Seedance tiers, and Kling 3.0 `pro`.
-- [ ] **WaveSpeed isn't confirmed.** Nobody has checked yet that WaveSpeed's Seedance variant accepts several reference images. Until then it's only a backup.
+- [ ] **No 1080p on the main video model.** Seedance 2.0 Fast on fal tops out at 720p. The skill says so, and offers Kling 3.0 `pro` if you ask, with a warning that it holds the model and product less consistently.
 - [ ] **Kling 3.0 fields aren't confirmed.** Its request fields on Kie (`models/kling-3.md`) follow the guide's pattern but haven't been checked one by one.
 - [ ] **GPT Image 2 prices are estimates.** The exact per-image price at 2048×1152 high quality is estimated from fal's published size tiers.
